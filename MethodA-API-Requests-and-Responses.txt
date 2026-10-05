@@ -80,6 +80,8 @@ Example cURL request:
 curl --request GET 'http://127.0.0.1:8765/api/blogs' \
   --header 'Accept: application/json'
 
+  -- We need Pagination and Dfilters based on date range
+
 Success response — HTTP 200:
 
 [

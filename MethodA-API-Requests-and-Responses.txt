@@ -1,0 +1,137 @@
+METHODA DEMO API — REQUESTS AND RESPONSES
+
+Base URL: http://127.0.0.1:8765
+Replace this with your backend URL when deploying.
+Start the included local demo server with: python3 server.py --port 8765
+
+1. CONTACT FORM
+
+Endpoint: POST /api/contact
+Content-Type: application/json
+
+Example cURL request:
+
+curl --request POST 'http://127.0.0.1:8765/api/contact' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "name": "Demo Trader",
+    "email": "trader@example.com",
+    "phone": "9876543210",
+    "subject": "Product Question",
+    "message": "Please explain the Premium Account refund conditions."
+  }'
+
+Required fields: name, email, subject, message.
+Optional field: phone.
+
+Allowed subject values:
+- Product Question
+- Premium Account / Refund
+- Store / Coins
+- Support
+- Early Access
+- Partnership
+
+Validation:
+- Name must be non-blank and no longer than 100 characters.
+- Email must be valid and no longer than 254 characters.
+- Message must contain 10–3,000 characters after trimming.
+- Subject must match an allowed value.
+
+Success response — HTTP 200:
+
+{
+  "ok": true,
+  "demo": true,
+  "message": "Demo enquiry received successfully. No message was stored or sent to MethodA. Thank you for testing the form."
+}
+
+Validation failure — HTTP 400:
+
+{
+  "ok": false,
+  "message": "Please provide valid name, email, subject and message fields."
+}
+
+Unsupported Content-Type — HTTP 415:
+
+{
+  "ok": false,
+  "message": "Use application/json."
+}
+
+Empty request body or body exceeding 16,384 bytes — HTTP 413:
+
+{
+  "ok": false,
+  "message": "Request too large or empty."
+}
+
+The frontend displays success only when the HTTP response is successful and
+"ok" is true. The demo does not store or email contact messages.
+
+2. BLOG LISTING
+
+Endpoint: GET /api/blogs
+No request body or authentication is required by the demo.
+
+Example cURL request:
+
+curl --request GET 'http://127.0.0.1:8765/api/blogs' \
+  --header 'Accept: application/json'
+
+Success response — HTTP 200:
+
+[
+  {
+    "id": "structured-trading",
+    "title": "A trading routine you can actually repeat",
+    "category": "Trading Discipline",
+    "date": "2026-10-05",
+    "readTime": "3 min read",
+    "excerpt": "Build structure before, during and after your simulated trading session.",
+    "imageUrl": "assets/img/platform-preview.svg",
+    "url": "blog-structured-trading.html"
+  },
+  {
+    "id": "trading-journal",
+    "title": "What to record after a difficult trade",
+    "category": "Trading Journal",
+    "date": "2026-10-05",
+    "readTime": "3 min read",
+    "excerpt": "A simple review can turn a frustrating session into useful learning.",
+    "imageUrl": "assets/img/journal-guide.svg",
+    "url": "blog-trading-journal.html"
+  },
+  {
+    "id": "risk-management",
+    "title": "Why your practice needs a stopping rule",
+    "category": "Risk Management",
+    "date": "2026-10-05",
+    "readTime": "3 min read",
+    "excerpt": "Decide how a session ends before emotions start making the decision.",
+    "imageUrl": "assets/img/platform-preview.svg",
+    "url": "blog-risk-management.html"
+  },
+  {
+    "id": "fo-analytics",
+    "title": "What SEBI’s F&O loss data tells a learner",
+    "category": "F&O",
+    "date": "2026-10-05",
+    "readTime": "3 min read",
+    "excerpt": "Historical SEBI studies show why market risk deserves serious attention.",
+    "imageUrl": "assets/img/platform-preview.svg",
+    "url": "blog-fo-analytics.html"
+  }
+]
+
+Integration notes:
+- The frontend expects a plain JSON array, without a "data" wrapper.
+- Category filtering happens in the browser.
+- Dates use YYYY-MM-DD format.
+- imageUrl and url may be relative to the website or absolute HTTP(S) URLs.
+- Full articles currently live at the HTML pages referenced by url; they are
+  not returned by this endpoint.
+- An empty listing should return HTTP 200 with [].
+- Configure production endpoint URLs in assets/js/config.js using
+  site.contactUrl and site.blogDataUrl.

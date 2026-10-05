@@ -1,0 +1,42 @@
+[
+  {
+    "id": "structured-trading",
+    "title": "A trading routine you can actually repeat",
+    "category": "Trading Discipline",
+    "date": "2026-10-05",
+    "readTime": "3 min read",
+    "excerpt": "Build structure before, during and after your simulated trading session.",
+    "imageUrl": "assets/img/platform-preview.svg",
+    "url": "blog-structured-trading.html"
+  },
+  {
+    "id": "trading-journal",
+    "title": "What to record after a difficult trade",
+    "category": "Trading Journal",
+    "date": "2026-10-05",
+    "readTime": "3 min read",
+    "excerpt": "A simple review can turn a frustrating session into useful learning.",
+    "imageUrl": "assets/img/journal-guide.svg",
+    "url": "blog-trading-journal.html"
+  },
+  {
+    "id": "risk-management",
+    "title": "Why your practice needs a stopping rule",
+    "category": "Risk Management",
+    "date": "2026-10-05",
+    "readTime": "3 min read",
+    "excerpt": "Decide how a session ends before emotions start making the decision.",
+    "imageUrl": "assets/img/platform-preview.svg",
+    "url": "blog-risk-management.html"
+  },
+  {
+    "id": "fo-analytics",
+    "title": "What SEBI\u2019s F&O loss data tells a learner",
+    "category": "F&O",
+    "date": "2026-10-05",
+    "readTime": "3 min read",
+    "excerpt": "Historical SEBI studies show why market risk deserves serious attention.",
+    "imageUrl": "assets/img/platform-preview.svg",
+    "url": "blog-fo-analytics.html"
+  }
+]
